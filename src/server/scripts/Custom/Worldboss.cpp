@@ -52,12 +52,8 @@ struct Nameoftheboss : public ScriptedAI
 		m_creature->MonsterYell("YellonKilledplayer", LANG_UNIVERSAL, NULL);
 		DoCast(m_creature, Spellidhere);
 	}
-
-	void JustDied(Unit* Killer)
-	{
-	}
-
-	void Reset()
+	
+  	void Reset()
 	{
 		spell1_Timer = 0+rand()%8000;
 		phase1_Percent = 99;
@@ -77,15 +73,12 @@ struct Nameoftheboss : public ScriptedAI
 			m_creature->MonsterYell("YellOnenrage(start)", LANG_UNIVERSAL, NULL);
 		}
 
-		if ((m_creature->GetHealth() * 100 / m_creature->GetMaxHealth() <= 99) && phase == 0)
+		if ((m_creature->GetHealth() * 100 / m_creature->GetMaxHealth() <= 99) 
 		{
 			phase = 1;
 			m_creature->MonsterYell("OnHealYell", LANG_UNIVERSAL, NULL);
 		}
 
-		if (phase == 1)
-		{
-		}
 
 		if (spell1_Timer <= diff)
 		{
@@ -97,10 +90,12 @@ struct Nameoftheboss : public ScriptedAI
 	}
 };
 
+
 CreatureAI* GetAINameoftheboss(Creature* pCreature)
 {
 	return new NameofthebossAI (pCreature);
 }
+
 
 void AddSC_Nameoftheboss()
 {
